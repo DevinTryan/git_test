@@ -308,8 +308,7 @@
       <h1 class="hero-title">turn your life into a movie.</h1>
       <p class="hero-sub">Mitty reads your camera roll, finds the <em>3% worth sharing</em>, and turns it into cinematic posts — already in your voice. Three steps: <em>scan</em>, <em>ideas</em>, <em>revise</em>.</p>
       <div class="hero-actions">
-        <a href="#waitlist" class="btn btn-primary">request early access</a>
-        <a href="#how" class="btn btn-ghost">see how it works</a>
+        <a href="mailto:Devin@PineappleHi.com?subject=Early%20access%20request%20%E2%80%94%20mitty&body=Hi%20Devin%2C%0A%0AI'd%20like%20early%20access%20to%20mitty.%0A%0AThanks!" class="btn btn-primary">request access</a>
       </div>
       <p class="hero-note">Private by default · analyzed on-device · you approve every post.</p>
     </div>
@@ -568,8 +567,8 @@
     const email = document.getElementById('email').value.trim();
     if (!email) return;
     const subject = encodeURIComponent('Early access request — mitty');
-    const body = encodeURIComponent('Hi mitty team,\n\nI\'d like early access. My email is: ' + email + '\n\nThanks!');
-    window.location.href = 'mailto:hello@mitty.film?subject=' + subject + '&body=' + body;
+    const body = encodeURIComponent('Hi Devin,\n\nI\'d like early access to mitty. My email is: ' + email + '\n\nThanks!');
+    window.location.href = 'mailto:Devin@PineappleHi.com?subject=' + subject + '&body=' + body;
     note.textContent = 'Thanks — your email app is opening. Hit send and you\'re on the list.';
   });
 </script>
