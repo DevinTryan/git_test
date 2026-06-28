@@ -144,6 +144,67 @@
   .note-card .txt { font-size: 11px; color: var(--ink2); line-height: 1.5; }
   .post-btn { background: var(--ink); color: var(--bg); border-radius: 999px; text-align: center; padding: 13px; font-size: 13px; font-weight: 500; margin-top: 14px; }
 
+  /* ---------- hero 3-step showcase ---------- */
+  .hero-copy { max-width: 720px; margin: 0 auto; text-align: center; }
+  .hero-copy .hero-actions { justify-content: center; }
+  .hero-steps {
+    margin-top: 60px; display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 30px; align-items: start; justify-items: center;
+  }
+  .phone.sm { width: 268px; height: 560px; animation: float 7s ease-in-out infinite; animation-delay: var(--d, 0s); }
+  .hstep { display: flex; flex-direction: column; align-items: center; }
+  .hstep-cap { margin-top: 24px; text-align: center; display: flex; flex-direction: column; gap: 5px; align-items: center; }
+  .hstep-cap .num { font-family: "Fraunces", serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+  .hstep-cap b { font-family: "Fraunces", serif; font-weight: 400; font-size: 21px; letter-spacing: -0.3px; color: var(--ink); }
+  .hstep-cap small { font-size: 12.5px; color: var(--ink3); max-width: 215px; line-height: 1.45; }
+  @media (max-width: 940px) {
+    .hero-steps { grid-template-columns: 1fr; gap: 46px; margin-top: 48px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .phone.sm { animation: none; } }
+
+  /* in-phone app components (scan / ideas / revise screens) */
+  .p-eyebrow { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .p-h { font-family: "Fraunces", serif; font-weight: 400; font-size: 22px; line-height: 1.08; letter-spacing: -0.5px; margin-top: 8px; color: var(--ink); }
+  .p-body { font-size: 11.5px; line-height: 1.45; color: var(--ink2); margin-top: 12px; }
+  .p-small { font-size: 10px; color: var(--ink3); }
+  .p-pulse { width: 58px; height: 58px; border-radius: 999px; border: 1px solid var(--accent); position: relative; display: flex; align-items: center; justify-content: center; margin: 18px auto 0; }
+  .p-pulse::after { content: ""; position: absolute; inset: -8px; border-radius: 999px; border: 1px solid var(--accent); opacity: 0.4; }
+  .p-pulse span { width: 12px; height: 12px; border-radius: 999px; background: var(--accent); }
+  .p-count { text-align: center; margin-top: 16px; font-family: "Fraunces", serif; font-weight: 300; font-size: 26px; color: var(--ink); }
+  .p-count small { color: var(--ink3); font-size: 15px; }
+  .p-prog { height: 5px; background: var(--line); border-radius: 99px; overflow: hidden; margin-top: 14px; }
+  .p-prog i { display: block; height: 100%; width: 12%; background: var(--ink); }
+  .p-list { display: flex; flex-direction: column; gap: 7px; margin-top: 16px; }
+  .p-li { display: flex; gap: 8px; font-size: 10.5px; color: var(--ink2); align-items: flex-start; }
+  .p-li b { color: var(--ink); }
+  .p-li .ok { color: var(--success); flex-shrink: 0; }
+  .p-li .pend { color: var(--accent); flex-shrink: 0; }
+  .p-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .p-ic { width: 28px; height: 28px; border-radius: 99px; display: flex; align-items: center; justify-content: center; background: var(--card); border: 1px solid var(--line); }
+  .p-ic svg { width: 12px; height: 12px; stroke: var(--ink); fill: none; }
+  .p-title { font-family: "Fraunces", serif; font-size: 17px; color: var(--ink); }
+  .p-soft { background: var(--cardSoft); border: 1px solid var(--line); border-radius: 13px; padding: 12px; }
+  .p-pill { display: inline-flex; padding: 4px 8px; border-radius: 999px; background: var(--accentSoft); color: var(--accent); font-size: 8.5px; font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; }
+  .p-thumb { width: 60px; flex-shrink: 0; border-radius: 9px; overflow: hidden; position: relative; aspect-ratio: 9/15; }
+  .p-thumb .ov { position: absolute; inset: 0; padding: 7px; display: flex; flex-direction: column; justify-content: flex-end; color: rgba(255,255,255,0.95); }
+  .p-thumb .t { font-family: "Fraunces", serif; font-size: 9px; line-height: 1.1; }
+  .p-thumb .m { font-size: 7.5px; opacity: 0.75; margin-top: 2px; }
+  .g-brown { background: linear-gradient(180deg, #2D2520 0%, #826B58 100%); }
+  .g-green { background: linear-gradient(180deg, #1F2A2D 0%, #6B8285 100%); }
+  .g-purple { background: linear-gradient(180deg, #2D1F2A 0%, #8C5A78 100%); }
+  .p-idea { display: flex; gap: 10px; padding: 9px; border: 1px solid var(--line); border-radius: 13px; background: var(--card); }
+  .p-idea .meta { flex: 1; }
+  .p-idea .nm { font-size: 11.5px; font-weight: 500; color: var(--ink); line-height: 1.15; margin-top: 4px; }
+  .p-idea .ds { font-size: 9.5px; color: var(--ink3); line-height: 1.4; margin-top: 4px; }
+  .p-score { display: inline-flex; padding: 3px 7px; border-radius: 999px; background: var(--accentSoft); color: var(--accent); font-size: 8.5px; font-weight: 600; margin-top: 6px; }
+  .p-sech { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--ink); margin: 14px 0 8px; }
+  .p-noterow { display: flex; gap: 9px; align-items: center; font-size: 10.5px; color: var(--ink2); }
+  .p-noterow .dot { width: 7px; height: 7px; border-radius: 99px; flex-shrink: 0; }
+  .p-noterow b { color: var(--ink); }
+  .p-checkable { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); font-size: 11px; color: var(--ink); }
+  .p-ring { width: 17px; height: 17px; border-radius: 999px; border: 1.5px solid var(--line); flex-shrink: 0; }
+  .p-dash { border: 1px dashed var(--line); border-radius: 12px; padding: 10px 12px; font-size: 10px; color: var(--ink3); font-style: italic; margin-top: 11px; }
+
   /* ---------- section scaffolding ---------- */
   section { padding: 92px 0; }
   .section-head { max-width: 640px; margin-bottom: 56px; }
@@ -240,11 +301,11 @@
 
 <!-- ===== HERO ===== -->
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
+  <div class="wrap">
+    <div class="hero-copy">
       <span class="eyebrow">turn your camera roll into a film</span>
-      <h1 class="hero-title">your life<br>is the movie.</h1>
-      <p class="hero-sub">Mitty reads your camera roll, finds the <em>3% worth sharing</em>, and turns it into cinematic posts — already in your voice.</p>
+      <h1 class="hero-title">your life is the movie.</h1>
+      <p class="hero-sub">Mitty reads your camera roll, finds the <em>3% worth sharing</em>, and turns it into cinematic posts — already in your voice. Three steps: <em>scan</em>, <em>ideas</em>, <em>revise</em>.</p>
       <div class="hero-actions">
         <a href="#waitlist" class="btn btn-primary">request early access</a>
         <a href="#how" class="btn btn-ghost">see how it works</a>
@@ -252,30 +313,103 @@
       <p class="hero-note">Private by default · analyzed on-device · you approve every post.</p>
     </div>
 
-    <div class="phone-wrap">
-      <div class="phone"><div class="screen">
-        <div class="status-bar"><span>9:41</span><span>●●●</span></div>
-        <div class="scr-content">
-          <div class="scr-eyebrow">today · tuesday</div>
-          <div class="logo-sm">your scene<span style="color:var(--accent)">.</span></div>
-          <div class="video-card"><div class="ov">
-            <div class="vc-top">
-              <span class="vpill dark">main character</span>
-              <span class="vpill light">8/10</span>
+    <div class="hero-steps">
+
+      <!-- STEP 1 · SCAN -->
+      <figure class="hstep">
+        <div class="phone sm" style="--d:0s"><div class="screen">
+          <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+          <div class="scr-content" style="padding:26px 18px 18px;">
+            <div class="p-eyebrow">building your story</div>
+            <div class="p-h">mitty is reading<br>your camera roll.</div>
+            <div class="p-body">we're scanning the last 90 days first. you'll see your first ideas in ~10 minutes.</div>
+            <div class="p-pulse"><span></span></div>
+            <div class="p-count">147 <small>/ 1,243</small></div>
+            <div class="p-small" style="text-align:center;margin-top:4px;">moments understood</div>
+            <div class="p-prog"><i></i></div>
+            <div class="p-list">
+              <div class="p-li"><span class="ok">✓</span><span><b>23</b> high-quality moments found</span></div>
+              <div class="p-li"><span class="ok">✓</span><span><b>6</b> recurring people detected</span></div>
+              <div class="p-li"><span class="ok">✓</span><span><b>4</b> places you go often</span></div>
+              <div class="p-li"><span class="pend">○</span><span>looking for the story arcs…</span></div>
             </div>
-            <div class="play"></div>
-            <div>
-              <div class="vc-label">that day<br>in peguyangan.</div>
-              <div class="vc-meta">23s · 11 clips · sat oct 5</div>
-            </div>
-          </div></div>
-          <div class="note-card">
-            <div class="ttl">director's note</div>
-            <div class="txt">strong hook — the golden hour shot opens it. captions match your voice.</div>
           </div>
-          <div class="post-btn">post it</div>
-        </div>
-      </div></div>
+        </div></div>
+        <figcaption class="hstep-cap"><span class="num">01</span><b>scan</b><small>mitty reads your whole camera roll and indexes every moment.</small></figcaption>
+      </figure>
+
+      <!-- STEP 2 · IDEAS -->
+      <figure class="hstep">
+        <div class="phone sm" style="--d:-2.3s"><div class="screen">
+          <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+          <div class="scr-content" style="padding:26px 18px 18px;">
+            <div class="p-topbar"><div class="p-ic"><svg viewBox="0 0 24 24" stroke-width="1.6"><polyline points="15 18 9 12 15 6"/></svg></div><div class="p-title">ideas</div><div style="width:28px"></div></div>
+            <div class="p-body" style="margin-top:0;">three ideas mitty pulled from your library. tap one to make it today's post.</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+              <div class="p-idea">
+                <div class="p-thumb" style="background:linear-gradient(180deg,#3A2A16 0%,#D2A45C 100%);"><div class="ov"><div class="t">your summer</div><div class="m">15s · 12 clips</div></div></div>
+                <div class="meta">
+                  <span class="p-pill">highlight · summer</span>
+                  <div class="nm">your summer in 15 seconds</div>
+                  <div class="ds">sun, water, friends — your season, cut tight.</div>
+                  <span class="p-score">9/10</span>
+                </div>
+              </div>
+              <div class="p-idea">
+                <div class="p-thumb" style="background:linear-gradient(180deg,#2D1A14 0%,#B5673E 100%);"><div class="ov"><div class="t">8 best meals</div><div class="m">8 clips · 2026</div></div></div>
+                <div class="meta">
+                  <span class="p-pill">collection · food</span>
+                  <div class="nm">the eight best meals you made in 2026</div>
+                  <div class="ds">a tasting menu of your year in the kitchen.</div>
+                  <span class="p-score">8/10</span>
+                </div>
+              </div>
+              <div class="p-idea">
+                <div class="p-thumb" style="background:linear-gradient(180deg,#16242A 0%,#5C8FA4 100%);"><div class="ov"><div class="t">lake day</div><div class="m">19s · 9 clips</div></div></div>
+                <div class="meta">
+                  <span class="p-pill">memory · family</span>
+                  <div class="nm">lake day with the family</div>
+                  <div class="ds">the whole crew, golden hour on the water.</div>
+                  <span class="p-score">8/10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div></div>
+        <figcaption class="hstep-cap"><span class="num">02</span><b>ideas</b><small>the moments worth posting, surfaced and ranked for you.</small></figcaption>
+      </figure>
+
+      <!-- STEP 3 · REVISE -->
+      <figure class="hstep">
+        <div class="phone sm" style="--d:-4.6s"><div class="screen">
+          <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+          <div class="scr-content" style="padding:26px 18px 18px;">
+            <div class="p-topbar"><div class="p-ic"><svg viewBox="0 0 24 24" stroke-width="1.6"><polyline points="15 18 9 12 15 6"/></svg></div><div class="p-title">revise</div><div style="width:28px"></div></div>
+            <div style="display:flex;gap:11px;align-items:center;">
+              <div class="p-thumb g-brown" style="width:48px;"><div class="ov"><div class="t" style="font-size:7.5px;">lake day</div></div></div>
+              <div><div style="font-size:12px;font-weight:500;color:var(--ink);">lake day with the family.</div><div class="p-small">19s · 9 clips</div></div>
+            </div>
+            <div class="p-soft" style="margin-top:14px;">
+              <div class="p-sech" style="margin-top:0;">notes from the director</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div class="p-noterow"><span class="dot" style="background:var(--success);"></span><span>hook strength: <b>strong</b></span></div>
+                <div class="p-noterow"><span class="dot" style="background:var(--success);"></span><span>pacing: <b>tight</b></span></div>
+                <div class="p-noterow"><span class="dot" style="background:var(--accent);"></span><span>caption: <b>could push voice further</b></span></div>
+              </div>
+            </div>
+            <div class="p-sech">change something</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div class="p-checkable"><span class="p-ring"></span>make it shorter (15s)</div>
+              <div class="p-checkable"><span class="p-ring"></span>change the music</div>
+              <div class="p-checkable"><span class="p-ring"></span>swap a clip</div>
+              <div class="p-checkable"><span class="p-ring"></span>edit the caption</div>
+            </div>
+            <div class="p-dash">tell mitty what to change in your own words…</div>
+          </div>
+        </div></div>
+        <figcaption class="hstep-cap"><span class="num">03</span><b>revise</b><small>tweak length, music, clips, or caption — in your voice.</small></figcaption>
+      </figure>
+
     </div>
   </div>
 </header>
