@@ -153,7 +153,7 @@
   }
   .phone.sm { width: 268px; height: 560px; animation: float 7s ease-in-out infinite; animation-delay: var(--d, 0s); }
   .hstep { display: flex; flex-direction: column; align-items: center; }
-  .hstep-cap { margin-top: 24px; text-align: center; display: flex; flex-direction: column; gap: 5px; align-items: center; }
+  .hstep-cap { order: -1; margin: 0 0 26px; text-align: center; display: flex; flex-direction: column; gap: 5px; align-items: center; }
   .hstep-cap .num { font-family: "Fraunces", serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
   .hstep-cap b { font-family: "Fraunces", serif; font-weight: 400; font-size: 21px; letter-spacing: -0.3px; color: var(--ink); }
   .hstep-cap small { font-size: 12.5px; color: var(--ink3); max-width: 215px; line-height: 1.45; }
@@ -185,8 +185,9 @@
   .p-title { font-family: "Fraunces", serif; font-size: 17px; color: var(--ink); }
   .p-soft { background: var(--cardSoft); border: 1px solid var(--line); border-radius: 13px; padding: 12px; }
   .p-pill { display: inline-flex; padding: 4px 8px; border-radius: 999px; background: var(--accentSoft); color: var(--accent); font-size: 8.5px; font-weight: 600; letter-spacing: 0.3px; text-transform: uppercase; }
-  .p-thumb { width: 60px; flex-shrink: 0; border-radius: 9px; overflow: hidden; position: relative; aspect-ratio: 9/15; }
-  .p-thumb .ov { position: absolute; inset: 0; padding: 7px; display: flex; flex-direction: column; justify-content: flex-end; color: rgba(255,255,255,0.95); }
+  .p-thumb { width: 60px; flex-shrink: 0; border-radius: 9px; overflow: hidden; position: relative; aspect-ratio: 9/15; background: #2D2520; }
+  .p-thumb .scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .p-thumb .ov { position: absolute; inset: 0; padding: 7px; display: flex; flex-direction: column; justify-content: flex-end; color: rgba(255,255,255,0.95); background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0) 60%); }
   .p-thumb .t { font-family: "Fraunces", serif; font-size: 9px; line-height: 1.1; }
   .p-thumb .m { font-size: 7.5px; opacity: 0.75; margin-top: 2px; }
   .g-brown { background: linear-gradient(180deg, #2D2520 0%, #826B58 100%); }
@@ -347,7 +348,7 @@
             <div class="p-body" style="margin-top:0;">three ideas mitty pulled from your library. tap one to make it today's post.</div>
             <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
               <div class="p-idea">
-                <div class="p-thumb" style="background:linear-gradient(180deg,#3A2A16 0%,#D2A45C 100%);"><div class="ov"><div class="t">your summer</div><div class="m">15s · 12 clips</div></div></div>
+                <div class="p-thumb"><svg class="scene" viewBox="0 0 60 100" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky-s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EBC793"/><stop offset=".6" stop-color="#DFA163"/></linearGradient><linearGradient id="sea-s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E8FA4"/><stop offset="1" stop-color="#3E6E84"/></linearGradient></defs><rect width="60" height="100" fill="url(#sky-s)"/><circle cx="43" cy="24" r="9" fill="#F7E7BE"/><path d="M0 62 L17 40 L31 62 Z" fill="#9A7A53"/><path d="M20 62 L40 30 L60 62 Z" fill="#7E5F3E"/><path d="M40 30 L47 41 L33 41 Z" fill="#EFE6D2"/><rect y="62" width="60" height="19" fill="url(#sea-s)"/><rect y="81" width="60" height="19" fill="#E8D4AA"/></svg><div class="ov"><div class="t">your summer</div><div class="m">15s · 12 clips</div></div></div>
                 <div class="meta">
                   <span class="p-pill">highlight · summer</span>
                   <div class="nm">your summer in 15 seconds</div>
@@ -356,7 +357,7 @@
                 </div>
               </div>
               <div class="p-idea">
-                <div class="p-thumb" style="background:linear-gradient(180deg,#2D1A14 0%,#B5673E 100%);"><div class="ov"><div class="t">8 best meals</div><div class="m">8 clips · 2026</div></div></div>
+                <div class="p-thumb"><svg class="scene" viewBox="0 0 60 100" preserveAspectRatio="xMidYMid slice"><rect width="60" height="100" fill="#2A1F18"/><rect x="0" y="0" width="29.3" height="49.3" fill="#B5673E"/><rect x="30.7" y="0" width="29.3" height="49.3" fill="#8C9A5B"/><rect x="0" y="50.7" width="29.3" height="49.3" fill="#C98A4B"/><rect x="30.7" y="50.7" width="29.3" height="49.3" fill="#6E7E4A"/><g fill="#F4EFE6"><circle cx="14.6" cy="24.6" r="8.6"/><circle cx="45.3" cy="24.6" r="8.6"/><circle cx="14.6" cy="75.3" r="8.6"/><circle cx="45.3" cy="75.3" r="8.6"/></g><g><circle cx="14.6" cy="24.6" r="4.4" fill="#A85B3C"/><circle cx="45.3" cy="24.6" r="4.4" fill="#7E8A4A"/><circle cx="14.6" cy="75.3" r="4.4" fill="#C07A3A"/><circle cx="45.3" cy="75.3" r="4.4" fill="#5E6E3E"/></g></svg><div class="ov"><div class="t">8 best meals</div><div class="m">8 clips · 2026</div></div></div>
                 <div class="meta">
                   <span class="p-pill">collection · food</span>
                   <div class="nm">the eight best meals you made in 2026</div>
@@ -365,7 +366,7 @@
                 </div>
               </div>
               <div class="p-idea">
-                <div class="p-thumb" style="background:linear-gradient(180deg,#16242A 0%,#5C8FA4 100%);"><div class="ov"><div class="t">lake day</div><div class="m">19s · 9 clips</div></div></div>
+                <div class="p-thumb"><svg class="scene" viewBox="0 0 60 100" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="lk-i" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A6C4CE"/><stop offset=".5" stop-color="#5E8FA4"/><stop offset="1" stop-color="#3E6E84"/></linearGradient></defs><rect width="60" height="100" fill="url(#lk-i)"/><circle cx="45" cy="20" r="8" fill="#EFE6D1" opacity=".85"/><path d="M11 66 Q30 80 49 66 L45 61 L15 61 Z" fill="#6E4F36"/><rect x="15" y="57" width="30" height="5" fill="#8A6647"/><circle cx="23" cy="51" r="3" fill="#27211C"/><rect x="20.5" y="53" width="5" height="8" rx="2" fill="#B5673E"/><circle cx="30" cy="50" r="3" fill="#27211C"/><rect x="27.5" y="52" width="5" height="9" rx="2" fill="#5E7E8C"/><circle cx="37" cy="51" r="3" fill="#27211C"/><rect x="34.5" y="53" width="5" height="8" rx="2" fill="#C98A4B"/><path d="M5 86 q6 -3 12 0 t12 0 t12 0 t12 0" stroke="#C4DCE2" stroke-width="1.2" fill="none" opacity=".55"/></svg><div class="ov"><div class="t">lake day</div><div class="m">19s · 9 clips</div></div></div>
                 <div class="meta">
                   <span class="p-pill">memory · family</span>
                   <div class="nm">lake day with the family</div>
@@ -386,7 +387,7 @@
           <div class="scr-content" style="padding:26px 18px 18px;">
             <div class="p-topbar"><div class="p-ic"><svg viewBox="0 0 24 24" stroke-width="1.6"><polyline points="15 18 9 12 15 6"/></svg></div><div class="p-title">revise</div><div style="width:28px"></div></div>
             <div style="display:flex;gap:11px;align-items:center;">
-              <div class="p-thumb g-brown" style="width:48px;"><div class="ov"><div class="t" style="font-size:7.5px;">lake day</div></div></div>
+              <div class="p-thumb" style="width:48px;"><svg class="scene" viewBox="0 0 60 100" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="lk-r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A6C4CE"/><stop offset=".5" stop-color="#5E8FA4"/><stop offset="1" stop-color="#3E6E84"/></linearGradient></defs><rect width="60" height="100" fill="url(#lk-r)"/><circle cx="45" cy="20" r="8" fill="#EFE6D1" opacity=".85"/><path d="M11 66 Q30 80 49 66 L45 61 L15 61 Z" fill="#6E4F36"/><rect x="15" y="57" width="30" height="5" fill="#8A6647"/><circle cx="23" cy="51" r="3" fill="#27211C"/><rect x="20.5" y="53" width="5" height="8" rx="2" fill="#B5673E"/><circle cx="30" cy="50" r="3" fill="#27211C"/><rect x="27.5" y="52" width="5" height="9" rx="2" fill="#5E7E8C"/><circle cx="37" cy="51" r="3" fill="#27211C"/><rect x="34.5" y="53" width="5" height="8" rx="2" fill="#C98A4B"/></svg><div class="ov"><div class="t" style="font-size:7.5px;">lake day</div></div></div>
               <div><div style="font-size:12px;font-weight:500;color:var(--ink);">lake day with the family.</div><div class="p-small">19s · 9 clips</div></div>
             </div>
             <div class="p-soft" style="margin-top:14px;">
