@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>mitty — your life is the movie.</title>
+<meta name="description" content="Mitty turns your camera roll into cinematic posts, already in your voice. Point us at your photos — we'll find the moments that should be content and make you the lead." />
+
+<!-- Open Graph / social -->
+<meta property="og:title" content="mitty — your life is the movie." />
+<meta property="og:description" content="Mitty turns your camera roll into cinematic posts, already in your voice." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mitty.film" />
+<meta name="theme-color" content="#F4F0E8" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #F4F0E8;
+    --card: #FFFFFF;
+    --cardSoft: #FAF7F1;
+    --ink: #1A1612;
+    --ink2: #4A4138;
+    --ink3: #8A8175;
+    --line: #E5DFD2;
+    --accent: #B7935E;
+    --accentSoft: #F2E9D7;
+    --success: #6B8E5F;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  .serif { font-family: "Fraunces", Georgia, serif; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(244, 240, 232, 0.82);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  nav.scrolled { border-bottom-color: var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { font-family: "Fraunces", serif; font-weight: 400; font-size: 26px; letter-spacing: -1px; }
+  .nav-links { display: flex; align-items: center; gap: 30px; }
+  .nav-links a { font-size: 14px; color: var(--ink2); font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--ink); color: var(--bg) !important;
+    padding: 10px 20px; border-radius: 999px; font-size: 13px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); }
+  @media (max-width: 640px) { .nav-links a.hide-sm { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 80px 0 60px; }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px; align-items: center;
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--accent); margin-bottom: 22px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
+  h1.hero-title {
+    font-family: "Fraunces", serif; font-weight: 400;
+    font-size: clamp(44px, 7vw, 76px); line-height: 1.02;
+    letter-spacing: -2px;
+  }
+  .hero-sub {
+    font-size: 18px; color: var(--ink2); margin-top: 26px;
+    max-width: 440px; line-height: 1.6;
+  }
+  .hero-sub em { font-style: italic; color: var(--ink); }
+  .hero-actions { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 15px 28px; border-radius: 999px; font-size: 15px; font-weight: 500;
+    cursor: pointer; border: none; font-family: inherit; transition: all 0.2s;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .hero-note { margin-top: 20px; font-size: 12.5px; color: var(--ink3); }
+
+  /* ---------- phone mock ---------- */
+  .phone-wrap { display: flex; justify-content: center; }
+  .phone {
+    width: 286px; height: 600px;
+    background: #0F0E0C; border-radius: 44px; padding: 8px;
+    box-shadow: 0 40px 80px -28px rgba(20, 15, 10, 0.5), 0 8px 18px -4px rgba(20, 15, 10, 0.25);
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  @media (prefers-reduced-motion: reduce) { .phone { animation: none; } }
+  .phone::before {
+    content: ""; position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+    width: 86px; height: 22px; background: #000; border-radius: 12px; z-index: 10;
+  }
+  .screen {
+    background: var(--bg); width: 100%; height: 100%; border-radius: 36px;
+    overflow: hidden; position: relative; display: flex; flex-direction: column;
+  }
+  .status-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 24px 0; font-size: 11px; color: var(--ink); font-weight: 600;
+  }
+  .scr-content { flex: 1; padding: 28px 20px 20px; display: flex; flex-direction: column; }
+  .scr-eyebrow { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); }
+  .logo-sm { font-family: "Fraunces", serif; font-size: 19px; font-weight: 400; letter-spacing: -0.4px; margin-top: 4px; }
+  .video-card {
+    aspect-ratio: 9/15; border-radius: 18px; overflow: hidden; margin-top: 18px;
+    background: linear-gradient(180deg, #2D2520 0%, #4A3D33 50%, #826B58 100%); position: relative;
+  }
+  .video-card .ov { position: absolute; inset: 0; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+  .vc-top { display: flex; justify-content: space-between; }
+  .vpill { padding: 5px 11px; border-radius: 999px; font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; }
+  .vpill.dark { background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+  .vpill.light { background: rgba(255,255,255,0.95); color: var(--ink); }
+  .play { align-self: center; margin: auto; width: 50px; height: 50px; border-radius: 999px; background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center; }
+  .play::after { content: ""; width: 0; height: 0; border-left: 14px solid #1A1612; border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 3px; }
+  .vc-label { color: rgba(255,255,255,0.96); font-size: 17px; font-family: "Fraunces", serif; font-weight: 300; line-height: 1.15; }
+  .vc-meta { color: rgba(255,255,255,0.85); font-size: 11px; margin-top: 7px; }
+  .note-card { background: var(--cardSoft); border: 1px solid var(--line); border-radius: 16px; padding: 13px; margin-top: 14px; }
+  .note-card .ttl { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--ink); margin-bottom: 5px; }
+  .note-card .txt { font-size: 11px; color: var(--ink2); line-height: 1.5; }
+  .post-btn { background: var(--ink); color: var(--bg); border-radius: 999px; text-align: center; padding: 13px; font-size: 13px; font-weight: 500; margin-top: 14px; }
+
+  /* ---------- section scaffolding ---------- */
+  section { padding: 92px 0; }
+  .section-head { max-width: 640px; margin-bottom: 56px; }
+  .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  h2.sec-title {
+    font-family: "Fraunces", serif; font-weight: 400;
+    font-size: clamp(32px, 4.6vw, 50px); line-height: 1.08; letter-spacing: -1.2px;
+  }
+  .sec-sub { font-size: 17px; color: var(--ink2); margin-top: 18px; line-height: 1.6; }
+
+  /* ---------- how it works ---------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step {
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    padding: 32px 28px; transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .step:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -24px rgba(20,15,10,0.28); }
+  .step-num { font-family: "Fraunces", serif; font-size: 14px; color: var(--accent); }
+  .step-icon {
+    width: 48px; height: 48px; border-radius: 14px; background: var(--accentSoft);
+    color: var(--accent); display: flex; align-items: center; justify-content: center; margin: 18px 0 22px;
+  }
+  .step h3 { font-family: "Fraunces", serif; font-weight: 400; font-size: 23px; letter-spacing: -0.4px; }
+  .step p { font-size: 14.5px; color: var(--ink2); margin-top: 12px; line-height: 1.6; }
+
+  /* ---------- privacy ---------- */
+  .privacy { background: var(--ink); color: var(--bg); border-radius: 32px; padding: 64px 56px; }
+  .privacy .eyebrow { color: var(--accent); }
+  .privacy h2 { font-family: "Fraunces", serif; font-weight: 400; font-size: clamp(30px,4.4vw,46px); line-height: 1.1; letter-spacing: -1px; color: var(--bg); }
+  .promise-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; margin-top: 40px; }
+  .promise { display: flex; gap: 14px; align-items: flex-start; }
+  .promise .ic { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+  .promise span { font-size: 15.5px; color: #EDE7DA; line-height: 1.5; }
+
+  /* ---------- features ---------- */
+  .feature-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 32px; }
+  .feature .ft { font-family: "Fraunces", serif; font-size: 20px; font-weight: 400; letter-spacing: -0.3px; display: flex; align-items: center; gap: 10px; }
+  .feature .fic { color: var(--accent); display: inline-flex; }
+  .feature p { font-size: 14px; color: var(--ink2); margin-top: 10px; line-height: 1.6; }
+
+  /* ---------- CTA ---------- */
+  .cta { text-align: center; }
+  .cta-card {
+    background: linear-gradient(165deg, #FAF7F1 0%, #F2E9D7 100%);
+    border: 1px solid var(--line); border-radius: 32px; padding: 72px 32px;
+  }
+  .cta-card h2 { font-family: "Fraunces", serif; font-weight: 400; font-size: clamp(34px,5vw,56px); line-height: 1.04; letter-spacing: -1.5px; }
+  .cta-card .sub { font-size: 17px; color: var(--ink2); margin-top: 20px; }
+  .signup { display: flex; gap: 10px; max-width: 440px; margin: 36px auto 0; flex-wrap: wrap; justify-content: center; }
+  .signup input {
+    flex: 1; min-width: 220px; padding: 15px 20px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--card); font-family: inherit;
+    font-size: 15px; color: var(--ink); outline: none; transition: border-color 0.2s;
+  }
+  .signup input:focus { border-color: var(--ink); }
+  .signup-note { font-size: 12.5px; color: var(--ink3); margin-top: 16px; }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 40px 0; }
+  .foot-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .foot-brand { font-family: "Fraunces", serif; font-size: 22px; }
+  .foot-tag { font-size: 13px; color: var(--ink3); font-style: italic; }
+  .foot-links { display: flex; gap: 24px; font-size: 13px; color: var(--ink3); }
+  .foot-links a:hover { color: var(--ink); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero { padding: 48px 0 40px; }
+    .phone-wrap { order: -1; }
+    .steps, .feature-row, .promise-grid { grid-template-columns: 1fr; }
+    .privacy { padding: 48px 28px; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">mitty</a>
+    <div class="nav-links">
+      <a href="#how" class="hide-sm">how it works</a>
+      <a href="#privacy" class="hide-sm">privacy</a>
+      <a href="#features" class="hide-sm">features</a>
+      <a href="#waitlist" class="nav-cta">request access</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">turn your camera roll into a film</span>
+      <h1 class="hero-title">your life<br>is the movie.</h1>
+      <p class="hero-sub">Mitty reads your camera roll, finds the <em>3% worth sharing</em>, and turns it into cinematic posts — already in your voice.</p>
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn btn-primary">request early access</a>
+        <a href="#how" class="btn btn-ghost">see how it works</a>
+      </div>
+      <p class="hero-note">Private by default · analyzed on-device · you approve every post.</p>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="phone"><div class="screen">
+        <div class="status-bar"><span>9:41</span><span>●●●</span></div>
+        <div class="scr-content">
+          <div class="scr-eyebrow">today · tuesday</div>
+          <div class="logo-sm">your scene<span style="color:var(--accent)">.</span></div>
+          <div class="video-card"><div class="ov">
+            <div class="vc-top">
+              <span class="vpill dark">main character</span>
+              <span class="vpill light">8/10</span>
+            </div>
+            <div class="play"></div>
+            <div>
+              <div class="vc-label">that day<br>in peguyangan.</div>
+              <div class="vc-meta">23s · 11 clips · sat oct 5</div>
+            </div>
+          </div></div>
+          <div class="note-card">
+            <div class="ttl">director's note</div>
+            <div class="txt">strong hook — the golden hour shot opens it. captions match your voice.</div>
+          </div>
+          <div class="post-btn">post it</div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">how mitty works</span>
+      <h2 class="sec-title">we turn your life into a film.</h2>
+      <p class="sec-sub">Point us at your camera roll. We'll do the rest — quietly, in the background, until your next post is ready.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3.5"/><path d="M3 7a2 2 0 0 1 2-2h3l2-3h4l2 3h3a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        </div>
+        <h3>scan &amp; understand</h3>
+        <p>Every clip is indexed for what's actually in it — people, places, light, and the moments that carry a story.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h3>find the moments</h3>
+        <p>Mitty surfaces the 3% of your footage that should become content — the clips you'd never have the time to dig out yourself.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16v12H4z"/><path d="M8 6v12M16 6v12"/></svg>
+        </div>
+        <h3>make you the lead</h3>
+        <p>Cinematic posts assembled and captioned in your voice — one clear daily decision: <em>post it</em>, revise, or skip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRIVACY ===== -->
+<section id="privacy">
+  <div class="wrap">
+    <div class="privacy reveal">
+      <span class="eyebrow">privacy first</span>
+      <h2>your photos<br>stay yours.</h2>
+      <div class="promise-grid">
+        <div class="promise">
+          <span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h11"/></svg></span>
+          <span>We analyze on-device by default.</span>
+        </div>
+        <div class="promise">
+          <span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h11"/></svg></span>
+          <span>Nothing uploads without your nod.</span>
+        </div>
+        <div class="promise">
+          <span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h11"/></svg></span>
+          <span>Exclude any face, place, or date.</span>
+        </div>
+        <div class="promise">
+          <span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h11"/></svg></span>
+          <span>Delete anytime — your data, your call.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">what's inside</span>
+      <h2 class="sec-title">a director in your pocket.</h2>
+    </div>
+    <div class="feature-row">
+      <div class="feature reveal">
+        <div class="ft"><span class="fic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="M12 8v4l3 2"/></svg></span> today's scene</div>
+        <p>One cinematic post, ready each morning — with a director's note on why it works. Post it, revise, or skip.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ft"><span class="fic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></span> memories</div>
+        <p>Stories Mitty notices in your library — a trip, a year in review, the people who show up — each ready to become a post.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ft"><span class="fic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span> your voice</div>
+        <p>Connect Instagram read-only and Mitty learns your captions, rhythm, and style — so every post sounds like you, not a robot.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ft"><span class="fic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span> searchable library</div>
+        <p>Ask for "golden hour on the beach" and find it instantly. Every clip rated, by people, places, and moments.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ft"><span class="fic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span> learns from results</div>
+        <p>A three-day check-in on every post tells Mitty what landed — so the next one is tuned to your real audience.</p>
+      </div>
+      <div class="feature reveal">
+        <div class="ft"><span class="fic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h18M3 6h18M3 18h18"/></svg></span> your cadence</div>
+        <p>Daily, three times a week, or once — your call. Mitty drops your next post at sunrise across Instagram, TikTok, and more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA / WAITLIST ===== -->
+<section id="waitlist" class="cta">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <h2>be the lead<br>of your own film.</h2>
+      <p class="sub">Request early access to Mitty. We'll be in touch as we open spots.</p>
+      <form class="signup" id="signupForm">
+        <input type="email" id="email" placeholder="you@email.com" required aria-label="email address" />
+        <button type="submit" class="btn btn-primary">request access</button>
+      </form>
+      <p class="signup-note" id="signupNote">No spam. Just an invite when your spot opens.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <div class="foot-brand">mitty</div>
+      <div class="foot-tag">your life is the movie.</div>
+    </div>
+    <div class="foot-links">
+      <a href="#how">how it works</a>
+      <a href="#privacy">privacy</a>
+      <a href="#waitlist">request access</a>
+    </div>
+    <div style="font-size:12px;color:var(--ink3);">© 2026 mitty</div>
+  </div>
+</footer>
+
+<script>
+  // nav border on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // waitlist — opens an email to mitty (no backend required)
+  const form = document.getElementById('signupForm');
+  const note = document.getElementById('signupNote');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    if (!email) return;
+    const subject = encodeURIComponent('Early access request — mitty');
+    const body = encodeURIComponent('Hi mitty team,\n\nI\'d like early access. My email is: ' + email + '\n\nThanks!');
+    window.location.href = 'mailto:hello@mitty.film?subject=' + subject + '&body=' + body;
+    note.textContent = 'Thanks — your email app is opening. Hit send and you\'re on the list.';
+  });
+</script>
+
+</body>
+</html>
