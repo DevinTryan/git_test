@@ -88,7 +88,7 @@
     max-width: 440px; line-height: 1.6;
   }
   .hero-sub em { font-style: italic; color: var(--ink); }
-  .hero-actions { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+  .hero-actions { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     padding: 15px 28px; border-radius: 999px; font-size: 15px; font-weight: 500;
@@ -254,14 +254,14 @@
   }
   .cta-card h2 { font-family: "Fraunces", serif; font-weight: 400; font-size: clamp(34px,5vw,56px); line-height: 1.04; letter-spacing: -1.5px; }
   .cta-card .sub { font-size: 17px; color: var(--ink2); margin-top: 20px; }
-  .signup { display: flex; gap: 10px; max-width: 440px; margin: 36px auto 0; flex-wrap: wrap; justify-content: center; }
+  .signup { display: flex; gap: 10px; max-width: 440px; margin: 0px auto 0; flex-wrap: wrap; justify-content: center; }
   .signup input {
     flex: 1; min-width: 220px; padding: 15px 20px; border-radius: 999px;
     border: 1px solid var(--line); background: var(--card); font-family: inherit;
     font-size: 15px; color: var(--ink); outline: none; transition: border-color 0.2s;
   }
   .signup input:focus { border-color: var(--ink); }
-  .signup-note { font-size: 12.5px; color: var(--ink3); margin-top: 16px; }
+  .signup-note { font-size: 12.5px; color: var(--ink3); }
 
   /* ---------- footer ---------- */
   footer { border-top: 1px solid var(--line); padding: 40px 0; }
@@ -293,7 +293,7 @@
       <a href="#how" class="hide-sm">how it works</a>
       <a href="#privacy" class="hide-sm">privacy</a>
       <a href="#features" class="hide-sm">features</a>
-      <a href="#waitlist" class="nav-cta">request access</a>
+      <!-- <a href="#waitlist" class="nav-cta">request access</a> -->
     </div>
   </div>
 </nav>
@@ -308,7 +308,15 @@
       <h1 class="hero-title">turn your life into a movie.</h1>
       <p class="hero-sub">Mitty reads your camera roll, finds the <em>3% worth sharing</em>, and turns it into cinematic posts — already in your voice. Three steps: <em>scan</em>, <em>ideas</em>, <em>revise</em>.</p>
       <div class="hero-actions">
-        <a href="mailto:Devin@PineappleHi.com?subject=Early%20access%20request%20%E2%80%94%20mitty&body=Hi%20Devin%2C%0A%0AI'd%20like%20early%20access%20to%20mitty.%0A%0AThanks!" class="btn btn-primary">request access</a>
+        <form class="signup" id="signupForm">
+          <input type="email" id="email" placeholder="you@email.com" required aria-label="email address" />
+          <button type="submit" class="btn btn-primary">request access</button>
+        </form>
+
+        <div>
+          <p class="signup-note" id="signupNote">No spam. Just an invite when your spot opens.</p>
+          <p id="signup-error" class="signup-note" style="color: red; visibility: hidden;">Error message goes here.</p>
+        </div>
       </div>
       <p class="hero-note">Private by default · analyzed on-device · you approve every post.</p>
     </div>
@@ -511,23 +519,6 @@
         <div class="ft"><span class="fic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h18M3 6h18M3 18h18"/></svg></span> your cadence</div>
         <p>Daily, three times a week, or once — your call. Mitty drops your next post at sunrise across Instagram, TikTok, and more.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA / WAITLIST ===== -->
-<section id="waitlist" class="cta">
-  <div class="wrap">
-    <div class="cta-card reveal">
-      <h2>be the lead<br>of your own film.</h2>
-      <p class="sub">Request early access to Mitty. We'll be in touch as we open spots.</p>
-      <form class="signup" id="signupForm">
-        <input type="email" id="email" placeholder="you@email.com" required aria-label="email address" />
-        <button type="submit" class="btn btn-primary">request access</button>
-      </form>
-      <p class="signup-note" id="signupNote">No spam. Just an invite when your spot opens.</p>
-
-      <p id="signup-error" class="signup-note" style="color: red; visibility: hidden;">Error message goes here.</p>
     </div>
   </div>
 </section>
