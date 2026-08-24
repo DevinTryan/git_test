@@ -526,6 +526,8 @@
         <button type="submit" class="btn btn-primary">request access</button>
       </form>
       <p class="signup-note" id="signupNote">No spam. Just an invite when your spot opens.</p>
+
+      <p id="signup-error" class="signup-note" style="color: red; visibility: hidden;">Error message goes here.</p>
     </div>
   </div>
 </section>
@@ -560,17 +562,66 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // waitlist — opens an email to mitty (no backend required)
+  // waitlist
   const form = document.getElementById('signupForm');
   const note = document.getElementById('signupNote');
-  form.addEventListener('submit', (e) => {
+  const errMsg = document.getElementById("signup-error");
+
+  // supabase consts
+  const SUPABASE_URL = "https://oejhncxuablkduubwkez.supabase.co"
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_XzCXFEtjjDXoT52Q6_z1Pw_uxFxMhUO"
+
+  let isSubmitting = false;
+
+  // on submit
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const email = document.getElementById('email').value.trim();
+
+    if (isSubmitting) return;
+
+    const email = document.getElementById('email').value.trim().toLowerCase();
     if (!email) return;
-    const subject = encodeURIComponent('Early access request — mitty');
-    const body = encodeURIComponent('Hi Devin,\n\nI\'d like early access to mitty. My email is: ' + email + '\n\nThanks!');
-    window.location.href = 'mailto:Devin@PineappleHi.com?subject=' + subject + '&body=' + body;
-    note.textContent = 'Thanks — your email app is opening. Hit send and you\'re on the list.';
+
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist_emails`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_PUBLISHABLE_KEY,
+          "Authorization": `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({
+          email: email,
+          source: "website-v1"
+        })
+      });
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        errMsg.textContent = `Something went wrong. Please try again.`;
+
+        if (result?.code === "23505") {
+          errMsg.textContent = `That email is already on the waitlist.`;
+        }
+        
+        errMsg.style.visibility = "visible";
+
+        throw new Error(result?.message);
+      }
+
+      note.textContent = 'Thanks, you\'re now on the list!';
+      errMsg.style.visibility = "hidden";
+      
+      isSubmitting = true;
+      setTimeout(() => { isSubmitting = false; }, 1000*10); // 10s
+    } catch (err) {
+      console.error(err);
+      if (errMsg.style.visibility != "visible") {
+        errMsg.textContent = "Something went wrong. Please try again.";
+        errMsg.style.visibility = "visible";
+      }
+    }
   });
 </script>
 
